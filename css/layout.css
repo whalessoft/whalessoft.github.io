@@ -1,0 +1,165 @@
+/* 셀렉터 연습 */
+/*
+가상클래스
+:hober,
+:visited,
+:focus,
+:active
+
+[]-태그의 속성 선ㅌ택할 때 사용
+ex)
+img[alt="로고"]{}
+img[title]{}
+img[src*="a.jpg"]{}
+img[src^="a.jpg"]{}
+img[src$=".jpg"]{} ~로 끝나는 것
+a[target]{}
+input[type="button"]{}
+
+
+태그:first-child -무조건 첫번째 요소 선택
+:first-of-type - 형제요소중에 첫번째 것만선택
+:last-child - 마지막 번째 요소 선택
+:last-of-type
+*/
+div,p{
+	border:1px solid #222;
+	padding:50px;
+}
+div:first-child{
+	background-color:blue;
+}
+p:first-of-type{
+	background-color: green;
+}
+div:last-child{
+	background-color: yellow;
+}
+div:last-of-type{
+	background-color: red;
+}
+doby{
+	height:5000px;
+}
+ul::after{
+	content:"";
+	display:block;
+	clear:both;
+}
+
+li{
+	float: left;
+	width:100px;
+	height: 100px;
+	padding: 20px;
+	border:1px solid #222;
+	
+}
+li:nth-child(3n+1){
+	clear: both;
+}
+/* 
+li:nth-child(3n+1)
+0 + 1 = 1
+1 + 3 = 4
+4 + 3 = 7
+7 + 3 = 10
+*/
+li.clear{
+	width:100px;
+	height:100px;
+}
+/* 
+nth 선택자
+:nth-child(1) 모든 요소의 n번째
+:nth-of-type() 선택 요소의 n번째
+*/
+div:nth-of-type(2){
+	padding:100px;
+
+}
+
+/* 
+가상요소
+::before{}
+::after{}
+*/
+section{
+	width:300px;
+	height:300px;
+	margin:0 auto;
+	border:2px solid #000;
+}
+section::before{
+	content:"전";
+	display: inline-block;
+
+	
+}
+section::after{
+	content:"후";
+	display: inline-block;
+;
+}
+section label{
+	display: inline-block;
+	position:relative;
+	margin: 0 10px;
+
+}
+section label span{
+	display: inline-block;
+	width:28px;
+	height: 28px;
+	padding-left: 32px;
+	line-height:28px;
+	background:url(../image/2019051319143717132186774/ico_s1_off.png) no-repeat 0 50%;
+	background-size: 28px 28px;
+	color:transparent;
+}
+section label:nth-of-type(2) span{
+	background-image:url(../image/2019051319143717132186774/ico_s2_off.png);
+}
+/* section label+label spna{
+	background-image:url(../image/2019051319143717132186774/ico_s2_off.png);
+} */
+
+
+/* cecked 되었을 때 이미지 바꾸기 */
+section label input:checked +span{
+	background-image:url(../image/2019051319143717132186774/ico_s1_on.png);
+	color:blue;
+}
+section label :nth-of-type(2) input:checked +span{
+background-image:url(../image/2019051319143717132186774/ico_s2_on.png);
+}
+section label input{
+	position: absolute;
+	z-index: -1;
+}
+
+/* float 해제 시키는 방법 
+1. 마크업 맨 마지막 요소로 빈 요소 삽입해서 class="clear"
+2. float 사용 된 자식의 부모요소에 overflow속성 사용
+3. float 사용 된 자식의 부모요소에 가상요소 활용한 ::arter 활용하여 css로 clear:both 시키는 방법
+ex)
+ul
+	li
+ul::after{
+content:""'
+clear:both;
+display:block;
+}
+li(float::left)
+*/
+
+.ul > li{
+	background-color:gray;
+}
+ul+section{
+	background-color:yellow;
+}
+
+/* 참조사이트
+https://www.w3.org/Talks.2012/0416-css-WWW2012/slida-selectors.html */
+
