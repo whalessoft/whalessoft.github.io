@@ -1,69 +1,269 @@
-/* Navigation */
-.nav{
-	width:100%;
-	border-top: 1px solid #222;
-	border-bottom: 1px solid #222;
-}
-.gnb{
-	width:800px;
+.tabgroup{
+	position: relative;
+	width:500px;
+	height: 250px;
 	margin: 0 auto;
 }
-.gnb::after{
-	content:"";
-	clear:both;
-	display:block;
+/* type1 - h2 + ul구조 */
+.tabmenu{
+	/* height:40px;
+	border-bottom: 1px solid #dadada; */
 }
-/* Depth1 - li */
-.dep1{
-	position: relative;
-	float:left;
-	width:25%;
+.tabmenu h2{
+	display: inline-block;
+	position:relative;
+	float: left;
+	margin-right: -1px;
 }
-.dep1 > a{
+.tabmenu h2 a{
 	display:inline-block;
-	padding:10px;
-	width:100%;
-	background-color:#222;
-	color:#fff;
-	text-align:center;
+	min-width:100px;
+	height: 40px;
+	padding:10px 10px;
+	border: 1px solid #dadada;
+	background-color: #f4f4f4;
+	text-align: center;
 }
-/* Depth2 - ul */
-.dep2{
-	display:none;
+.tabmenu ul{
+	display: none;
 	position: absolute;
+	top:39px;
+	left:0;
 	width:100%;
-	border: 1px solid #222;
-	border-top:0;
+	padding:15px 10px;
+	border-top:1px solid #dadada;
 }
-.dep2 li{
+.tabmenu li{
+	position: relative;
+	padding-left: 10px;
+	/* border-bottom: 1px dotted #dadada; */
+	background:url() no-repeat 0 50%;
+}
+.tabmenu li::before{
+	content:"";
+	display: inline-block;
+	position: absolute;
+	top:50%;
+	left: 0;
+	width: 2px;
+	height:2px;
+	background-color: #dadada;
+	transform:translatey(-50%);
+	-webkit-transform:translatey(-50%);
+	-moz-transform:translatey(-50%);
+	-ms-transform:translatey(-50%);
+	-o-transform:translatey(-50%);
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+.tabmenu li a{
+	overflow: hidden;
+	display: inline-block;
+	max-width: calc(100% - 100px);
+	padding:8px 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	/* 말줄임 처리 방식 */
+}
+
+/*  정가운데 위치 시킬때
+position:absolute;
+top:50%;
+left:50%;
+min-width:500px;
+transform:translate(-50%, -50%);
+
+*/
+.tabmenu li .date{
+	position: absolute;
+	top:50%;
+	right: 0;
+	transform: translatey(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+}
+.tabmenu .more{
+	position: absolute;
+	top:10px;
+	right:5px;
+	display: inline-block;
+}
+
+/* 활성화 메뉴 - on */
+.tabmenu.on h2{
+	z-index: 1;
+}
+.tabmenu.on h2 a{
+	border-color:#222;
+	border-bottom-color: transparent;
+	background-color:#fff;
+	font-weight:bold;
+}
+.tabmenu.on ul{
+	display: block;	
+}
+
+
+/* 한 줄 말줄임 처리 
+overflow:hidden;
+display:inline-block;
+max-width:100%;
+text-overflow:ellipsis;  //...말줄임 역활
+white-space:nowrap; // 텍스트를 한줄로 처리하는 역활
+*/
+
+
+.tab{
 
 }
-.dep2 a{
+.tab .tabtit{
+	display: inline-block;
+	position: relative;
+	float: left;
+	margin-right: -1px;
+}
+.tab .tabtit a{
+	display: inline-block;
+	min-width:100px;
+	height: 40px;
+	padding:10px;
+	border:1px solid #dadada;
+	background-color: #f4f4f4;
+	text-align: center;
+}
+.tab .tabcnt{
+	display: none;
+	position: absolute;
+	top:39px;
+	left:0;
+	width: 100%;
+}
+.tab .tabcnt ul{	
+	width:100%;
+	padding:15px 10px;
+	border-top:1px solid #dadada;
+}
+.tab .tabcnt li{
+	position: relative;
+	padding-left: 10px;
+	/* border-bottom: 1px dotted #dadada; */
+	background:url() no-repeat 0 50%;
+}
+.tab li::before{
+	content:"";
+	display: inline-block;
+	position: absolute;
+	top:50%;
+	left: 0;
+	width: 2px;
+	height:2px;
+	background-color: #dadada;
+	transform:translatey(-50%);
+	-webkit-transform:translatey(-50%);
+	-moz-transform:translatey(-50%);
+	-ms-transform:translatey(-50%);
+	-o-transform:translatey(-50%);
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+.tab .tabcnt li a{
+	overflow: hidden;
+	display: inline-block;
+	max-width: calc(100% - 100px);
+	padding:8px 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.tab .tabcnt li .date{
+	position: absolute;
+	top:50%;
+	right: 0;
+	transform: translatey(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+}
+.tab .tabcnt .more{
+	position: absolute;
+	top:-20px;
+	right:5px;
+	display: inline-block;
+}
+
+/* 활성화 메뉴 - on */
+.tab .tabtit.on{
+	z-index: 1;
+}
+.tab .tabtit.on a{
+	border-color:#222;
+	border-bottom-color: transparent;
+	background-color:#fff;
+	font-weight:bold;
+}
+.tab .tabcnt.on{
 	display: block;
-	padding:10px 5px;
-	border:1px solid #222;
+}
+
+
+/* 서브 콘텐츠 탭메뉴 구조 */
+.cbody{
+	width:700px;
+	margin:0 auto;
+}
+.tapmenu{
+	width: 100px;
+	height: 40px;
+	border-bottom: 1px solid #222;
+}
+.tapmenu::after{
+	content: "";
+	display:block;
+	clear:both;
+}
+.tapmenu li{
+	display: inline-block;
+	position: relative;
+	float:left;
+	margin-right: -1px;
+}
+.tapmenu li a{
+	display: inline-block;
+	min-width: 100px;
+	height: 40px;
+	padding:10px;
+	border:1px solid #dadada;
+	border-bottom-color: #222;
+	background-color: #f4f4f4;
+	text-align: center;
+}
+.tapcnt{
+	display:none;
+	position: relative;
+	z-index: 1;
+	min-height: 500px;
+	padding:15px 10px;
+	border:1px solid #dadada;
 	border-top:0;
-	border-left:0;
-	border-right: 0;
 }
-.dep2 li:last-child a{
-	border-bottom: 0;
+/* 활성화 메뉴 - on */
+.tapmenu li.on{
+	z-index: 1;
 }
-/* Depth1 - hover */
-.dep1 > a:hover{
-	border:1px solid #222;
+.tapmenu li.on a{
+	border-color:#222;
+	border-bottom-color: transparent;
 	background-color: #fff;
-	color: #222;
-	font-weight:bold;
+	font-weight: bold;
 }
-/* Depth2 - hover */
-.dep2 li:hover a{
-	background-color: rgba(0,0,0,.5);
-	color:#fff;
-	font-weight:bold;
-	text-shadow:2px 2px 2px rgba(0,0,0,.5);
-}
-/* 뎁스1 마우스 hover시 뎁스2 보이게 처리 */
-.dep1:hover .dep2{
+.tapcnt.on{
 	display:block;
 }
